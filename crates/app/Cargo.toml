@@ -1,0 +1,20 @@
+[package]
+name = "toolbox-app"
+version = "0.1.0"
+edition.workspace = true
+[lib]
+crate-type = ["cdylib", "rlib"]
+[dependencies]
+dioxus = { version = "0.7.3", default-features = false, features = ["web", "macro", "html", "signals", "hooks", "launch"] }
+wasm-bindgen.workspace = true
+wasm-bindgen-futures.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde-wasm-bindgen.workspace = true
+js-sys.workspace = true
+toolbox-core = { path = "../core" }
+toolbox-protocol = { path = "../protocol" }
+gloo-timers = { version = "0.3", features = ["futures"] }
+futures-channel = "0.3"
+qrcode = { version = "0.14", default-features = false, features = ["svg"] }
+web-sys = { workspace = true, features = ["Window", "Document", "Element", "HtmlElement", "HtmlInputElement", "HtmlAnchorElement", "Storage", "Navigator", "StorageManager", "Location", "Url", "UrlSearchParams", "Crypto", "File", "FileList", "Blob", "Worker", "WorkerOptions", "WorkerType", "MessageEvent", "ErrorEvent", "Event", "CloseEvent", "WebSocket", "BinaryType", "RtcPeerConnection", "RtcConfiguration", "RtcIceServer", "RtcSessionDescriptionInit", "RtcSdpType", "RtcSessionDescription", "RtcDataChannel", "RtcDataChannelEvent", "RtcDataChannelState", "RtcDataChannelType", "RtcIceGatheringState", "RtcPeerConnectionState", "Response", "DragEvent", "DataTransfer", "console"] }

@@ -1,0 +1,34 @@
+{
+  "name": "baan-toolbox-signaling",
+  "main": "crates/signaling/build/worker/shim.mjs",
+  "compatibility_date": "2026-10-23",
+  "build": {
+    "command": "bash scripts/build-signaling.sh",
+    "watch_dir": [
+      "crates/signaling/src",
+      "crates/protocol/src"
+    ]
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "ROOMS",
+        "class_name": "Room"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "Room"
+      ]
+    }
+  ],
+  "vars": {
+    "ALLOWED_ORIGINS": "http://localhost:8080,http://127.0.0.1:8080"
+  },
+  "observability": {
+    "enabled": false
+  }
+}

@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#edf4ef"><meta name="description" content="บ้านเครื่องมือ — ส่งไฟล์ รูป และวิดีโอโดยตรงระหว่างอุปกรณ์ เลือกผู้รับได้หลายคน">
+<title>ส่งไฟล์ใกล้ตัว · บ้านเครื่องมือ</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="main"><div class="boot"><span class="boot-mark">บ</span><p>กำลังเปิดบ้านเครื่องมือ…</p><noscript>เว็บนี้ต้องเปิดใช้ JavaScript และ WebAssembly</noscript></div></div>
+<script type="module">import init from '/app/toolbox_app.js';document.querySelector('#main').replaceChildren();init().catch(error=>{document.querySelector('#main').textContent='เปิดเว็บไม่สำเร็จ กรุณาโหลดหน้าใหม่: '+error.message;});</script>
+</body></html>

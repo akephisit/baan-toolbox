@@ -1,0 +1,14 @@
+[package]
+name = "toolbox-processor"
+version = "0.1.0"
+edition.workspace = true
+[lib]
+crate-type = ["cdylib", "rlib"]
+[dependencies]
+wasm-bindgen.workspace = true
+wasm-bindgen-futures.workspace = true
+js-sys.workspace = true
+serde.workspace = true
+serde-wasm-bindgen.workspace = true
+toolbox-core = { path = "../core" }
+web-sys = { workspace = true, features = ["Blob", "File", "WorkerGlobalScope", "WorkerNavigator", "console"] }
