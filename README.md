@@ -103,6 +103,28 @@ Wrangler รุ่นที่ตรึงไว้มีการนำคำ�
 
 ไม่ต้องมี VPS, R2, D1 หรือ storage สำหรับไฟล์บน Cloudflare `observability` ปิดเป็นค่าเริ่มต้น ไม่ log SDP, IP หรือชื่อไฟล์ใน application code
 
+## Deploy อัตโนมัติจาก GitHub
+
+Workflow `.github/workflows/deploy.yml` ทำงานเมื่อ push เข้า `main` หรือกด **Run workflow** ใน GitHub Actions: ทดสอบและ build release ทั้งสองส่วนก่อน จากนั้น deploy Worker แล้ว deploy Pages และตรวจ URL จริง Pull request จะทดสอบ/build อย่างเดียว แต่ไม่ deploy
+
+ใช้ GitHub Actions กับ Pages แบบ Direct Upload เพื่อรักษา URL เดิม ไม่ต้องเชื่อม Git integration ของ Pages ซ้ำ และไม่ต้องเปิดเครื่องพัฒนาทิ้งไว้ แต่ละ release ทำงานต่อกันโดยไม่ยกเลิก release ที่กำลัง deploy หากขั้นตอนใดล้มเหลวให้ดู Actions log แล้วแก้หรือกด Re-run jobs; Worker และ Pages เป็นคนละ deployment จึงไม่ใช่ธุรกรรมเดียวกัน
+
+ตั้งค่าที่ **Settings → Secrets and variables → Actions** ของ repository:
+
+- Secret `CLOUDFLARE_API_TOKEN`: dedicated API token ให้สิทธิ์ **Account / Cloudflare Pages / Edit** และ **Account / Workers Scripts / Edit** เฉพาะบัญชีที่ deploy อย่าใช้ Global API Key หรือ OAuth session จากเครื่องพัฒนา
+- Variable `CLOUDFLARE_ACCOUNT_ID`: ID บัญชี Cloudflare ที่มี Pages และ Worker
+
+ชื่อ Pages, URL signaling และ origins อยู่ใน `env` ของ workflow เปลี่ยนให้ตรงหากย้ายโปรเจกต์หรือเพิ่ม custom domain การ deploy จะเก็บ `DISCOVERY_SECRET` เดิมที่อยู่บน Worker จึงไม่ต้องนำ secret นี้มาใส่ GitHub
+
+ตั้ง token ครั้งแรกหรือเปลี่ยน token ด้วย stdin เพื่อไม่ให้ค่าอยู่ใน command history:
+
+```bash
+gh secret set CLOUDFLARE_API_TOKEN --repo akephisit/baan-toolbox
+gh variable set CLOUDFLARE_ACCOUNT_ID --repo akephisit/baan-toolbox --body YOUR_ACCOUNT_ID
+```
+
+เมื่อ push สำเร็จ ตรวจสถานะที่ [GitHub Actions](https://github.com/akephisit/baan-toolbox/actions/workflows/deploy.yml) หาก token หมดอายุหรือถูกเพิกถอนต้องแทนค่า secret นี้ก่อนรันใหม่
+
 ## ขอบเขตการตรวจรับ
 
 ผลการทดสอบจริงบันทึกใน `VALIDATION.md` การทดสอบ WebKit บน Linux ช่วยตรวจความเข้ากันได้ แต่ไม่แทน Safari บน iPhone/iPad จริง ต้องทดสอบการพักแอปและ export ไฟล์ใหญ่บนอุปกรณ์จริงเพิ่มเติม
