@@ -7,4 +7,4 @@ cd "$(dirname "$0")/.."
 # Set DISCOVERY_SECRET using `npx wrangler secret put DISCOVERY_SECRET` before this command.
 npx wrangler deploy --var "ALLOWED_ORIGINS:$ALLOWED_ORIGINS"
 bash scripts/build.sh
-npx wrangler pages deploy dist --config wrangler.pages.jsonc --project-name "$PAGES_PROJECT" --branch main
+npx wrangler pages deploy --cwd deploy/pages --project-name "$PAGES_PROJECT" --branch main

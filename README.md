@@ -116,6 +116,8 @@ Workflow `.github/workflows/deploy.yml` ทำงานเมื่อ push เ�
 
 ชื่อ Pages, URL signaling และ origins อยู่ใน `env` ของ workflow เปลี่ยนให้ตรงหากย้ายโปรเจกต์หรือเพิ่ม custom domain การ deploy จะเก็บ `DISCOVERY_SECRET` เดิมที่อยู่บน Worker จึงไม่ต้องนำ secret นี้มาใส่ GitHub
 
+config ของ Worker อยู่ที่ `wrangler.jsonc` ส่วน Pages อยู่ที่ `deploy/pages/wrangler.jsonc` และใช้ `--cwd deploy/pages` เพื่อให้ Wrangler โหลด config แยกกันตามรูปแบบที่ Pages รองรับ
+
 ตั้ง token ครั้งแรกหรือเปลี่ยน token ด้วย stdin เพื่อไม่ให้ค่าอยู่ใน command history:
 
 ```bash
