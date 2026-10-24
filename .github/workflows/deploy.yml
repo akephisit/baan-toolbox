@@ -21,8 +21,8 @@ jobs:
     timeout-minutes: 45
     env:
       SIGNALING_URL: https://baan-toolbox-signaling.kruakemaths.workers.dev
-      ALLOWED_ORIGINS: https://baan-toolbox-ake.pages.dev
-      PAGES_PROJECT: baan-toolbox-ake
+      ALLOWED_ORIGINS: https://baan-toolbox.pages.dev
+      PAGES_PROJECT: baan-toolbox
       WRANGLER_SEND_METRICS: 'false'
       CI: 'true'
     steps:

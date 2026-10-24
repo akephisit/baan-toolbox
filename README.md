@@ -1,6 +1,8 @@
 # บ้านเครื่องมือ — ส่งไฟล์ใกล้ตัว
 
-**เปิดใช้งาน:** https://baan-toolbox-ake.pages.dev
+**เปิดใช้งาน:** https://baan-toolbox.pages.dev
+
+ลิงก์เดิมจะ redirect มาที่ลิงก์นี้ ค่า deploy อัตโนมัติใช้ Pages project `baan-toolbox` และ frontend origin ใหม่นี้แล้ว
 
 Signaling deployment: https://baan-toolbox-signaling.kruakemaths.workers.dev
 

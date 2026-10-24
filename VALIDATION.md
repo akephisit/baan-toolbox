@@ -1,6 +1,6 @@
 # ผลการตรวจรับ
 
-ทดสอบจาก workspace นี้และ deployment จริงที่ https://baan-toolbox-ake.pages.dev
+ทดสอบจาก workspace นี้และ deployment จริงบน Cloudflare Pages (URL ปัจจุบัน: https://baan-toolbox.pages.dev)
 
 ## ผ่านแล้ว
 
